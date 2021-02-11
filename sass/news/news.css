@@ -2,7 +2,7 @@ body {
   margin: 0;
 }
 
-body .news-wrapper {
+.news-wrapper {
   padding: 0.2em 0.5em;
   margin: 50px auto;
   background: #d6ebff;
@@ -12,15 +12,39 @@ body .news-wrapper {
   width: 90%;
 }
 
-body .news-wrapper h1 {
+@media (min-width: 600px) and (max-width: 960px) {
+  .news-wrapper {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .news-wrapper {
+    margin: 0 auto;
+  }
+}
+
+.news-wrapper h1 {
   text-align: center;
 }
 
-body .news-wrapper .news {
+.news-wrapper .news {
   padding: 100px 100px;
 }
 
-body .news-wrapper .news .news-component {
+@media (min-width: 600px) and (max-width: 960px) {
+  .news-wrapper .news {
+    padding: 50px 50px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .news-wrapper .news {
+    padding: 50px 0;
+  }
+}
+
+.news-wrapper .news .news-component {
   width: 100%;
   margin: 0;
   padding: 20px;
@@ -31,10 +55,76 @@ body .news-wrapper .news .news-component {
   font-size: 15px;
 }
 
-body .news-wrapper .news .news-component:hover {
+@media (min-width: 600px) and (max-width: 960px) {
+  .news-wrapper .news .news-component {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .news-wrapper .news .news-component {
+    font-size: 10px;
+  }
+}
+
+.news-wrapper .news .news-component:hover {
   border-bottom: 1px solid #0059ff;
   font-size: 18px;
   -webkit-transition: all ease 0.4s;
   transition: all ease 0.4s;
+}
+
+footer {
+  height: 200px;
+  background-color: #ec5122;
+}
+
+footer .footer-color {
+  height: 190px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 10px;
+}
+
+footer .footer-color .footer-left ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  footer .footer-color .footer-left ul li {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  footer .footer-color .footer-left ul li {
+    font-size: 10px;
+  }
+}
+
+footer .footer-color .footer-right ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .footer-color .footer-right ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+}
+
+footer .footer-color .footer-right ul li span {
+  font-size: 20px;
+}
+
+footer .footer-color .footer-right ul li span a {
+  color: rgba(255, 255, 255, 0.8);
 }
 /*# sourceMappingURL=news.css.map */

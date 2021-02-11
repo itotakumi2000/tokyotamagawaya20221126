@@ -1,36 +1,136 @@
+// --------------------
+//    端末幅の設定
+// --------------------
+
+$widthPC: 960px; //PC
+$widthTab: 600px; //タブレット
+$widthSp: 320px; //スマートフォン
+
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: $widthPC) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (min-width: $widthSp) and (max-width: $widthTab) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: $widthPC) {
+    @content;
+  }
+}
+
+// --------------------
+//     全体の設定
+// --------------------
+
 body {
   margin: 0;
+}
 
-  .news-wrapper {
-    padding: 0.2em 0.5em;
-    margin: 50px auto;
-    background: #d6ebff;
-    box-shadow: 0px 0px 0px 10px #d6ebff;
-    border: dashed 2px white;
-    width: 90%;
+.news-wrapper {
+  padding: 0.2em 0.5em;
+  margin: 50px auto;
+  @include tab {
+    margin: 0 auto;
+  }
+  @include sp {
+    margin: 0 auto;
+  }
+  background: #d6ebff;
+  box-shadow: 0px 0px 0px 10px #d6ebff;
+  border: dashed 2px white;
+  width: 90%;
 
-    h1 {
-      text-align: center;
+  h1 {
+    text-align: center;
+  }
+
+  .news {
+    padding: 100px 100px;
+    @include tab {
+      padding: 50px 50px;
+    }
+    @include sp {
+      padding: 50px 0;
     }
 
-    .news {
-      padding: 100px 100px;
-
-      .news-component {
-        width: 100%;
-        margin: 0;
-        padding: 20px;
-        background-color: #d6ebff;
-        border: none;
-        border-bottom: 1px solid white;
-        text-align: left;
-        font-size: 15px;
+    .news-component {
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      background-color: #d6ebff;
+      border: none;
+      border-bottom: 1px solid white;
+      text-align: left;
+      font-size: 15px;
+      @include tab {
+        font-size: 13px;
       }
+      @include sp {
+        font-size: 10px;
+      }
+    }
 
-      .news-component:hover {
-        border-bottom: 1px solid rgb(0, 89, 255);
-        font-size: 18px;
-        transition: all ease 0.4s;
+    .news-component:hover {
+      border-bottom: 1px solid rgb(0, 89, 255);
+      font-size: 18px;
+      transition: all ease 0.4s;
+    }
+  }
+}
+
+// ------------------------
+//     フッターのスタイル
+// ------------------------
+
+footer {
+  height: 200px;
+  background-color: rgb(236, 81, 34);
+
+  .footer-color {
+    height: 190px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+
+    .footer-left {
+      ul {
+        li {
+          list-style: none;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 17px;
+          @include tab {
+            font-size: 15px;
+          }
+          @include sp {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .footer-right {
+      ul {
+        display: flex;
+
+        li {
+          list-style: none;
+          color: rgba(255, 255, 255, 0.8);
+          margin-right: 20px;
+
+          span {
+            font-size: 20px;
+
+            a {
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
       }
     }
   }

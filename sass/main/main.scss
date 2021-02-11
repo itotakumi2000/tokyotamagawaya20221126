@@ -1,154 +1,436 @@
+// --------------------
+//    端末幅の設定
+// --------------------
+
+$widthPC: 960px; //PC
+$widthTab: 600px; //タブレット
+$widthSp: 320px; //スマートフォン
+
+@mixin tab {
+  @media (min-width: $widthTab) and (max-width: $widthPC) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media (min-width: $widthSp) and (max-width: $widthTab) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: $widthPC) {
+    @content;
+  }
+}
+
+// --------------------
+//    全体のスタイル
+// --------------------
+
 body {
-  .top {
-    background: rgb(236, 81, 34);
-    height: 500px;
+  margin: 0;
+}
 
-    div.drop-container {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      margin: auto;
-      height: 200px;
-      width: 200px;
+.wrap {
+  overflow: hidden;
+}
+
+// ------------------------
+//    トップ画面のスタイル
+// ------------------------
+
+.top {
+  background: rgb(236, 81, 34);
+  height: 500px;
+
+  div.drop-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    height: 200px;
+    width: 200px;
+  }
+
+  div.drop {
+    will-change: animation;
+    position: absolute;
+    top: -25%;
+    width: 100%;
+    height: 100%;
+    border-radius: 100% 5% 100% 100%;
+    transform: rotate(-45deg);
+    margin: 0px;
+    background: rgb(250, 168, 101);
+    animation: drip 4s forwards;
+  }
+
+  h1 {
+    will-change: animation;
+    color: white;
+    position: absolute;
+    font-size: 2.5em;
+    @include tab {
+      font-size: 2em;
     }
+    @include sp {
+      font-size: 1.5em;
+    }
+    height: 1em;
+    top: 100px;
+    bottom: 200px;
+    @include sp {
+      bottom: 150px;
+    }
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: auto;
+    text-align: center;
+    opacity: 0;
+    animation: appear 2s 2.5s forwards;
+  }
 
-    div.drop {
-      position: absolute;
-      top: -25%;
-      width: 100%;
-      height: 100%;
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .top-character {
+    will-change: animation;
+    color: white;
+    position: absolute;
+    font-size: 1.5em;
+    height: 0.5em;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -300px;
+    z-index: 2;
+    margin: auto;
+    text-align: center;
+    opacity: 0;
+    animation: appear 2s 2.5s forwards;
+  }
+
+  .arrow-bottom {
+    will-change: animation;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px;
+    border-bottom: 4px solid white;
+    border-right: 4px solid white;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: auto;
+    text-align: center;
+    opacity: 0;
+    animation: arrow 2s 2.5s forwards;
+  }
+
+  @keyframes arrow {
+    0% {
+      opacity: 0;
+      bottom: -400px;
+    }
+    100% {
+      opacity: 1;
+      bottom: -450px;
+    }
+  }
+
+  div.drop-container:before,
+  div.drop-container:after {
+    will-change: animation;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 55%;
+    right: 50%;
+    transform: translate(50%) rotateX(75deg);
+    border-radius: 100%;
+    opacity: 0;
+    width: 75%;
+    height: 75%;
+    border: 5px solid skyblue;
+    animation: dripple 2s ease-out 1s;
+  }
+
+  div.drop-container:after {
+    will-change: animation;
+    animation: dripple 2s ease-out 1.7s;
+  }
+
+  @keyframes drip {
+    45% {
+      top: 0;
       border-radius: 100% 5% 100% 100%;
       transform: rotate(-45deg);
-      margin: 0px;
-      background: rgb(250, 168, 101);
-      animation: drip 4s forwards;
     }
-
-    h1 {
-      color: white;
-      position: absolute;
-      font-size: 2.5em;
-      height: 1em;
+    100% {
       top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2;
-      margin: auto;
-      text-align: center;
-      opacity: 0;
-      animation: appear 2s 2.5s forwards;
-    }
-
-    @keyframes appear {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-
-    p {
-      color: white;
-      position: absolute;
-      font-size: 1.5em;
-      height: 0.5em;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: -300px;
-      z-index: 2;
-      margin: auto;
-      text-align: center;
-      opacity: 0;
-      animation: appear 2s 2.5s forwards;
-    }
-
-    .arrow-bottom {
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      margin: 0 10px;
-      border-bottom: 4px solid white;
-      border-right: 4px solid white;
-      transform: rotate(45deg);
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 2;
-      margin: auto;
-      text-align: center;
-      opacity: 0;
-      animation: arrow 2s 2.5s forwards;
-    }
-
-    @keyframes arrow {
-      0% {
-        opacity: 0;
-        bottom: -400px;
-      }
-      100% {
-        opacity: 1;
-        bottom: -450px;
-      }
-    }
-
-    div.drop-container:before,
-    div.drop-container:after {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      top: 55%;
-      right: 50%;
-      transform: translate(50%) rotateX(75deg);
+      transform: rotate(0deg);
       border-radius: 100%;
+    }
+  }
+
+  @keyframes dripple {
+    0% {
+      width: 150px;
+      height: 150px;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      width: 500px;
+      height: 500px;
+      top: -20%;
       opacity: 0;
-      width: 75%;
-      height: 75%;
-      border: 5px solid skyblue;
-      animation: dripple 2s ease-out 1s;
+    }
+  }
+}
+
+// ------------------------
+//    ニュースのスタイル
+// ------------------------
+
+.news {
+  width: 100%;
+  position: relative;
+  @include tab {
+    height: 50%;
+  }
+  @include sp {
+    height: 50%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    @include tab {
+      height: 50%;
+    }
+    @include sp {
+      height: 50%;
+    }
+    background-color: black;
+    opacity: 0;
+    @include tab {
+      opacity: 0.4;
+    }
+    @include sp {
+      opacity: 0.4;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .news_read {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    @include tab {
+      font-size: 30px;
+    }
+    @include sp {
+      font-size: 30px;
+    }
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+  }
+
+  .news_more {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 15px;
+    position: absolute;
+    top: 60%;
+    @include tab {
+      top: 70%;
+    }
+    @include sp {
+      top: 70%;
+    }
+    left: 50%;
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+    transform: translate(-50%, -50%);
+  }
+}
+
+.news:hover > .wrapper {
+  opacity: 0.7;
+  transition: all ease 0.4s;
+}
+
+.news:hover > .news_read {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+.news:hover > .news_more {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+// ------------------------
+//   商品紹介（上）のスタイル
+// ------------------------
+
+.item-explanation-top {
+  width: 100%;
+  @include pc {
+    display: flex;
+  }
+
+  .item-explanation-top-top {
+    width: 50%;
+    @include tab {
+      width: 100%;
+    }
+    @include sp {
+      width: 100%;
+    }
+    height: 100%;
+    @include tab {
+      height: 50%;
+    }
+    @include sp {
+      height: 50%;
+    }
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
     }
 
-    div.drop-container:after {
-      animation: dripple 2s ease-out 1.7s;
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      opacity: 0;
+      @include tab {
+        opacity: 0.4;
+      }
+      @include sp {
+        opacity: 0.4;
+      }
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
-    @keyframes drip {
-      45% {
-        top: 0;
-        border-radius: 100% 5% 100% 100%;
-        transform: rotate(-45deg);
+    .item-explanation-top-top_read {
+      color: white;
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      @include tab {
+        font-size: 30px;
       }
-      100% {
-        top: 0;
-        transform: rotate(0deg);
-        border-radius: 100%;
+      @include sp {
+        font-size: 30px;
       }
-    }
-
-    @keyframes dripple {
-      0% {
-        width: 150px;
-        height: 150px;
-      }
-      25% {
+      opacity: 0;
+      @include tab {
         opacity: 1;
       }
-      100% {
-        width: 500px;
-        height: 500px;
-        top: -20%;
-        opacity: 0;
+      @include sp {
+        opacity: 1;
       }
+    }
+
+    .item-explanation-top-top_more {
+      text-decoration: none;
+      color: white;
+      border: 1px solid white;
+      padding: 15px;
+      position: absolute;
+      top: 60%;
+      @include tab {
+        top: 70%;
+      }
+      @include sp {
+        top: 70%;
+      }
+      left: 50%;
+      opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
+      transform: translate(-50%, -50%);
     }
   }
 
-  .news {
-    width: 100%;
+  .item-explanation-top-top:hover > .wrapper {
+    opacity: 0.7;
+    transition: all ease 0.4s;
+  }
+
+  .item-explanation-top-top:hover > .item-explanation-top-top_read {
+    opacity: 1;
+    transition: all ease 0.4s;
+  }
+
+  .item-explanation-top-top:hover > .item-explanation-top-top_more {
+    opacity: 1;
+    transition: all ease 0.4s;
+  }
+
+  .item-explanation-top-bottom {
+    width: 50%;
+    @include tab {
+      width: 100%;
+    }
+    @include sp {
+      width: 100%;
+    }
+    height: 100%;
+    @include tab {
+      height: 50%;
+    }
+    @include sp {
+      height: 50%;
+    }
     position: relative;
 
     img {
@@ -161,295 +443,105 @@ body {
       height: 100%;
       background-color: black;
       opacity: 0;
+      @include tab {
+        opacity: 0.4;
+      }
+      @include sp {
+        opacity: 0.4;
+      }
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .news_read {
+    .item-explanation-top-bottom_read {
       color: white;
       position: absolute;
       top: 35%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 60px;
+      font-size: 40px;
+      @include tab {
+        font-size: 30px;
+      }
+      @include sp {
+        font-size: 30px;
+      }
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
     }
 
-    .news_more {
+    .item-explanation-top-bottom_more {
       text-decoration: none;
       color: white;
       border: 1px solid white;
       padding: 15px;
       position: absolute;
       top: 60%;
+      @include tab {
+        top: 70%;
+      }
+      @include sp {
+        top: 70%;
+      }
       left: 50%;
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
       transform: translate(-50%, -50%);
     }
   }
 
-  .news:hover > .wrapper {
+  .item-explanation-top-bottom:hover > .wrapper {
     opacity: 0.7;
     transition: all ease 0.4s;
   }
 
-  .news:hover > .news_read {
+  .item-explanation-top-bottom:hover > .item-explanation-top-bottom_read {
     opacity: 1;
     transition: all ease 0.4s;
   }
 
-  .news:hover > .news_more {
+  .item-explanation-top-bottom:hover > .item-explanation-top-bottom_more {
     opacity: 1;
     transition: all ease 0.4s;
   }
+}
 
-  .item-explanation-top {
-    width: 100%;
+// ------------------------
+//   商品紹介（下）のスタイル
+// ------------------------
+
+.item-explanation-bottom {
+  width: 100%;
+  @include pc {
     display: flex;
-
-    .item-explanation-top-top {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .wrapper {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .item-explanation-top-top_read {
-        color: white;
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        opacity: 0;
-      }
-
-      .item-explanation-top-top_more {
-        text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        padding: 15px;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .item-explanation-top-top:hover > .wrapper {
-      opacity: 0.7;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-top-top:hover > .item-explanation-top-top_read {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-top-top:hover > .item-explanation-top-top_more {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-top-bottom {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .wrapper {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .item-explanation-top-bottom_read {
-        color: white;
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        opacity: 0;
-      }
-
-      .item-explanation-top-bottom_more {
-        text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        padding: 15px;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .item-explanation-top-bottom:hover > .wrapper {
-      opacity: 0.7;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-top-bottom:hover > .item-explanation-top-bottom_read {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-top-bottom:hover > .item-explanation-top-bottom_more {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
   }
 
-  .item-explanation-bottom {
-    width: 100%;
-    display: flex;
-
-    .item-explanation-bottom-top {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .wrapper {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .item-explanation-bottom-top_read {
-        color: white;
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        opacity: 0;
-      }
-
-      .item-explanation-bottom-top_more {
-        text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        padding: 15px;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%);
-      }
+  .item-explanation-bottom-top {
+    width: 50%;
+    @include tab {
+      width: 100%;
     }
-
-    .item-explanation-bottom-top:hover > .wrapper {
-      opacity: 0.7;
-      transition: all ease 0.4s;
+    @include sp {
+      width: 100%;
     }
-
-    .item-explanation-bottom-top:hover > .item-explanation-bottom-top_read {
-      opacity: 1;
-      transition: all ease 0.4s;
+    height: 100%;
+    @include tab {
+      height: 50%;
     }
-
-    .item-explanation-bottom-top:hover > .item-explanation-bottom-top_more {
-      opacity: 1;
-      transition: all ease 0.4s;
+    @include sp {
+      height: 50%;
     }
-
-    .item-explanation-bottom-bottom {
-      width: 50%;
-      height: 100%;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .wrapper {
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-
-      .item-explanation-bottom-bottom_read {
-        color: white;
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        opacity: 0;
-      }
-
-      .item-explanation-bottom-bottom_more {
-        text-decoration: none;
-        color: white;
-        border: 1px solid white;
-        padding: 15px;
-        position: absolute;
-        top: 60%;
-        left: 50%;
-        opacity: 0;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .item-explanation-bottom-bottom:hover > .wrapper {
-      opacity: 0.7;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-bottom-bottom:hover
-      > .item-explanation-bottom-bottom_read {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
-
-    .item-explanation-bottom-bottom:hover
-      > .item-explanation-bottom-bottom_more {
-      opacity: 1;
-      transition: all ease 0.4s;
-    }
-  }
-
-  .client {
-    width: 100%;
     position: relative;
 
     img {
@@ -462,51 +554,94 @@ body {
       height: 100%;
       background-color: black;
       opacity: 0;
+      @include tab {
+        opacity: 0.4;
+      }
+      @include sp {
+        opacity: 0.4;
+      }
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .client_read {
+    .item-explanation-bottom-top_read {
       color: white;
       position: absolute;
       top: 35%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 60px;
+      font-size: 40px;
+      @include tab {
+        font-size: 30px;
+      }
+      @include sp {
+        font-size: 30px;
+      }
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
     }
 
-    .client_more {
+    .item-explanation-bottom-top_more {
       text-decoration: none;
       color: white;
       border: 1px solid white;
       padding: 15px;
       position: absolute;
       top: 60%;
+      @include tab {
+        top: 70%;
+      }
+      @include sp {
+        top: 70%;
+      }
       left: 50%;
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
       transform: translate(-50%, -50%);
     }
   }
 
-  .client:hover > .wrapper {
+  .item-explanation-bottom-top:hover > .wrapper {
     opacity: 0.7;
     transition: all ease 0.4s;
   }
 
-  .client:hover > .client_read {
+  .item-explanation-bottom-top:hover > .item-explanation-bottom-top_read {
     opacity: 1;
     transition: all ease 0.4s;
   }
 
-  .client:hover > .client_more {
+  .item-explanation-bottom-top:hover > .item-explanation-bottom-top_more {
     opacity: 1;
     transition: all ease 0.4s;
   }
 
-  .supplier {
-    width: 100%;
+  .item-explanation-bottom-bottom {
+    width: 50%;
+    @include tab {
+      width: 100%;
+    }
+    @include sp {
+      width: 100%;
+    }
+    height: 100%;
+    @include tab {
+      height: 50%;
+    }
+    @include sp {
+      height: 50%;
+    }
     position: relative;
 
     img {
@@ -519,117 +654,397 @@ body {
       height: 100%;
       background-color: black;
       opacity: 0;
+      @include tab {
+        opacity: 0.4;
+      }
+      @include sp {
+        opacity: 0.4;
+      }
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .supplier_read {
+    .item-explanation-bottom-bottom_read {
       color: white;
       position: absolute;
       top: 35%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 60px;
+      font-size: 40px;
+      @include tab {
+        font-size: 30px;
+      }
+      @include sp {
+        font-size: 30px;
+      }
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
     }
 
-    .supplier_more {
+    .item-explanation-bottom-bottom_more {
       text-decoration: none;
       color: white;
       border: 1px solid white;
       padding: 15px;
       position: absolute;
       top: 60%;
+      @include tab {
+        top: 70%;
+      }
+      @include sp {
+        top: 70%;
+      }
       left: 50%;
       opacity: 0;
+      @include tab {
+        opacity: 1;
+      }
+      @include sp {
+        opacity: 1;
+      }
       transform: translate(-50%, -50%);
     }
   }
 
-  .supplier:hover > .wrapper {
+  .item-explanation-bottom-bottom:hover > .wrapper {
     opacity: 0.7;
     transition: all ease 0.4s;
   }
 
-  .supplier:hover > .supplier_read {
+  .item-explanation-bottom-bottom:hover > .item-explanation-bottom-bottom_read {
     opacity: 1;
     transition: all ease 0.4s;
   }
 
-  .supplier:hover > .supplier_more {
+  .item-explanation-bottom-bottom:hover > .item-explanation-bottom-bottom_more {
     opacity: 1;
     transition: all ease 0.4s;
   }
+}
 
-  .access {
+// ------------------------
+//     取引先のスタイル
+// ------------------------
+
+.client {
+  width: 100%;
+  position: relative;
+
+  img {
     width: 100%;
-    position: relative;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .wrapper {
-      width: 100%;
-      height: 100%;
-      background-color: black;
-      opacity: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    .access_read {
-      color: white;
-      position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 60px;
-      opacity: 0;
-    }
-
-    .access_more {
-      text-decoration: none;
-      color: white;
-      border: 1px solid white;
-      padding: 15px;
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      opacity: 0;
-      transform: translate(-50%, -50%);
-    }
+    height: 100%;
   }
 
-  .access:hover > .wrapper {
-    opacity: 0.7;
-    transition: all ease 0.4s;
-  }
-
-  .access:hover > .access_read {
-    opacity: 1;
-    transition: all ease 0.4s;
-  }
-
-  .access:hover > .access_more {
-    opacity: 1;
-    transition: all ease 0.4s;
-  }
-
-  footer {
+  .wrapper {
     width: 100%;
-    height: 50px;
+    height: 100%;
     background-color: black;
+    opacity: 0;
+    @include tab {
+      opacity: 0.4;
+    }
+    @include sp {
+      opacity: 0.4;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-    p {
-      margin: 0;
-      color: white;
-      line-height: 50px;
-      text-align: center;
-      font-size: 12px;
+  .client_read {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    @include tab {
+      font-size: 30px;
+    }
+    @include sp {
+      font-size: 30px;
+    }
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+  }
+
+  .client_more {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 15px;
+    position: absolute;
+    top: 60%;
+    @include tab {
+      top: 70%;
+    }
+    @include sp {
+      top: 70%;
+    }
+    left: 50%;
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+    transform: translate(-50%, -50%);
+  }
+}
+
+.client:hover > .wrapper {
+  opacity: 0.7;
+  transition: all ease 0.4s;
+}
+
+.client:hover > .client_read {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+.client:hover > .client_more {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+.supplier {
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    @include tab {
+      opacity: 0.4;
+    }
+    @include sp {
+      opacity: 0.4;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .supplier_read {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    @include tab {
+      font-size: 30px;
+    }
+    @include sp {
+      font-size: 30px;
+    }
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+  }
+
+  .supplier_more {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 15px;
+    position: absolute;
+    top: 60%;
+    @include tab {
+      top: 70%;
+    }
+    @include sp {
+      top: 70%;
+    }
+    left: 50%;
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+    transform: translate(-50%, -50%);
+  }
+}
+
+.supplier:hover > .wrapper {
+  opacity: 0.7;
+  transition: all ease 0.4s;
+}
+
+.supplier:hover > .supplier_read {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+.supplier:hover > .supplier_more {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+// ------------------------
+//     アクセスのスタイル
+// ------------------------
+
+.access {
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    @include tab {
+      opacity: 0.4;
+    }
+    @include sp {
+      opacity: 0.4;
+    }
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .access_read {
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 60px;
+    @include tab {
+      font-size: 30px;
+    }
+    @include sp {
+      font-size: 30px;
+    }
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+  }
+
+  .access_more {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 15px;
+    position: absolute;
+    top: 60%;
+    @include tab {
+      top: 70%;
+    }
+    @include sp {
+      top: 70%;
+    }
+    left: 50%;
+    opacity: 0;
+    @include tab {
+      opacity: 1;
+    }
+    @include sp {
+      opacity: 1;
+    }
+    transform: translate(-50%, -50%);
+  }
+}
+
+.access:hover > .wrapper {
+  opacity: 0.7;
+  transition: all ease 0.4s;
+}
+
+.access:hover > .access_read {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+.access:hover > .access_more {
+  opacity: 1;
+  transition: all ease 0.4s;
+}
+
+// ------------------------
+//     フッターのスタイル
+// ------------------------
+
+footer {
+  height: 200px;
+  background-color: rgb(236, 81, 34);
+
+  .footer-color {
+    height: 190px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+
+    .footer-left {
+      ul {
+        li {
+          list-style: none;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 17px;
+          @include tab {
+            font-size: 15px;
+          }
+          @include sp {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    .footer-right {
+      ul {
+        display: flex;
+
+        li {
+          list-style: none;
+          color: rgba(255, 255, 255, 0.8);
+          margin-right: 20px;
+
+          span {
+            font-size: 20px;
+
+            a {
+              color: rgba(255, 255, 255, 0.8);
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+}
+
+.news-wrapper {
+  padding: 0.2em 0.5em;
+  margin: 50px auto;
+  background: #bffab0;
+  -webkit-box-shadow: 0px 0px 0px 10px #bffab0;
+          box-shadow: 0px 0px 0px 10px #bffab0;
+  border: dashed 2px white;
+  width: 90%;
+}
+
+.news-wrapper h2 {
+  text-align: center;
+}
+
+.news-wrapper .access-component {
+  width: 70%;
+  margin: 50px auto;
+}
+
+@media (min-width: 960px) {
+  .news-wrapper .access-component {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+.news-wrapper .access-component iframe {
+  border: 0;
+  width: 55%;
+  height: 400px;
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .news-wrapper .access-component iframe {
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .news-wrapper .access-component iframe {
+    width: 100%;
+  }
+}
+
+.news-wrapper .access-component ul li {
+  list-style: none;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .news-wrapper .access-component ul li {
+    font-size: 14px;
+  }
+}
+
+footer {
+  height: 200px;
+  background-color: #ec5122;
+}
+
+footer .footer-color {
+  height: 190px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 10px;
+}
+
+footer .footer-color .footer-left ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 17px;
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  footer .footer-color .footer-left ul li {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 600px) {
+  footer .footer-color .footer-left ul li {
+    font-size: 10px;
+  }
+}
+
+footer .footer-color .footer-right ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .footer-color .footer-right ul li {
+  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 20px;
+}
+
+footer .footer-color .footer-right ul li span {
+  font-size: 20px;
+}
+
+footer .footer-color .footer-right ul li span a {
+  color: rgba(255, 255, 255, 0.8);
+}
+/*# sourceMappingURL=access.css.map */

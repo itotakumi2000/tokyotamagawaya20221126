@@ -4,76 +4,118 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/4c47482ab0.js"></script>
+    <meta
+      name="description"
+      content="玉川屋では『東京梅酒』が東京で人気の土産です。ANA機内誌『翼の王国』でも紹介された、東京土産のお酒です。姉妹品の『東京蜜柑酒』も大人気です。無農薬の東京果実を使用して添加物無添加で仕上げ本物の美味しさを世界にお届けいたします。"
+    />
     <link rel="stylesheet" href="./sass/normalize.css" />
     <link rel="stylesheet" href="./sass/main/main.css" />
-    <title>Document</title>
+    <title>東京玉川屋</title>
   </head>
   <body>
     <div class="wrap">
       <div class="top">
-        <h1>TOKYO-TAMAGAWAYA 東京玉川屋</h1>
-        <div class="drop-container">
-          <div class="drop"></div>
+        <h1>TOKYO-TAMAGAWAYA<br></br>東京玉川屋</h1>
+        <div id="drop-container">
+          <div id="drop"></div>
         </div>
-        <p>下にスクロールしてください</p>
-        <div class="arrow-bottom"></div>
+        <p id="top-character">下にスクロールしてください</p>
+        <div id="arrow-bottom"></div>
       </div>
-      <div class="news slide-bottom" data-plugin-options='{"offset": -500}'>
-        <img class="news_img" src="./img/top-news.jpg" alt=""  />
+      <div class="news slide-bottom" data-plugin-options='{"offset": -300}'>
+        <img class="news_img" src="./img/top-news.jpg" alt="新着情報"  />
         <div class="wrapper" id="news-wrapper"></div>
         <h2 class="news_read">ニュース</h2>
         <a href="./news.html" class="news_more">Read More</a>
       </div>
       <div class="item-explanation-top">
-        <div class="item-explanation-top-top slide-left" data-plugin-options='{"offset": -500}'>
-          <img class="item-explanation" src="./img/plum-wine.png" alt="" />
+        <div class="item-explanation-top-top slide-left" data-plugin-options='{"offset": -300}'>
+          <img class="item-explanation" src="./img/top-plum-wine.jpg" alt="東京梅酒" />
           <div class="wrapper" id="client-wrapper"></div>
           <h2 class="item-explanation-top-top_read">東京梅酒</h2>
-          <a href="./news.html" class="item-explanation-top-top_more">Read More</a>
+          <a href="./plum-wine.html" class="item-explanation-top-top_more">Read More</a>
         </div>
-        <div class="item-explanation-top-bottom slide-right" data-plugin-options='{"offset": -500}'>
-          <img class="item-explanation" src="./img/top-orange-wine.jpg" alt="" />
+        <div class="item-explanation-top-bottom slide-right" data-plugin-options='{"offset": -300}'>
+          <img class="item-explanation" src="./img/top-orange-wine.jpg" alt="東京蜜柑酒" />
           <div class="wrapper" id="client-wrapper"></div>
-          <h2 class="item-explanation-top-bottom_read">東京みかん酒</h2>
-          <a href="./news.html" class="item-explanation-top-bottom_more">Read More</a>
+          <h2 class="item-explanation-top-bottom_read">東京蜜柑酒</h2>
+          <a href="./orange-wine.html" class="item-explanation-top-bottom_more">Read More</a>
         </div>
         </div>
       </div>
       <div class="item-explanation-bottom">
-        <div class="item-explanation-bottom-top slide-left" data-plugin-options='{"offset": -500}'>
-          <img class="item-explanation" src="./img/top-peach-wine.png" alt="" />
+        <div class="item-explanation-bottom-top slide-left" data-plugin-options='{"offset": -300}'>
+          <img class="item-explanation" src="./img/top-peach-wine.png" alt="桃色にごり酒" />
           <div class="wrapper" id="client-wrapper"></div>
           <h2 class="item-explanation-bottom-top_read">桃色にごり酒</h2>
-          <a href="./news.html" class="item-explanation-bottom-top_more">Read More</a>
+          <a href="./peach-wine.html" class="item-explanation-bottom-top_more">Read More</a>
         </div>
-        <div class="item-explanation-bottom-bottom slide-right" data-plugin-options='{"offset": -500}'>
-          <img class="item-explanation" src="./img/top-white-wine.jpg" alt="" />
+        <div class="item-explanation-bottom-bottom slide-right" data-plugin-options='{"offset": -300}'>
+          <img class="item-explanation" src="./img/top-white-wine.png" alt="白色にごり酒" />
           <div class="wrapper" id="client-wrapper"></div>
           <h2 class="item-explanation-bottom-bottom_read">白色にごり酒</h2>
-          <a href="./news.html" class="item-explanation-bottom-bottom_more">Read More</a>
+          <a href="./white-wine.html" class="item-explanation-bottom-bottom_more">Read More</a>
         </div>
       </div>
-      <div class="client slide-bottom" data-plugin-options='{"offset": -500}'>
-        <img class="client_img" src="./img/top-tokyo-station.jpg" alt="" />
+      <div class="client slide-bottom" data-plugin-options='{"offset": -300}'>
+        <img class="client_img" src="./img/top-tokyo-station.jpg" alt="お取り扱い店舗" />
         <div class="wrapper" id="client-wrapper"></div>
-        <h2 class="client_read">取り扱い店舗</h2>
-        <a href="./news.html" class="client_more">Read More</a>
+        <h2 class="client_read">お取り扱い店舗</h2>
+        <a href="./dealer.html" class="client_more">Read More</a>
       </div>
-      <div class="supplier slide-bottom" data-plugin-options='{"offset": -500}'>
-        <img class="supplier_img" src="./img/top-supplier.jpg" alt="" />
+      <div class="supplier slide-bottom" data-plugin-options='{"offset": -300}'>
+        <img class="supplier_img" src="./img/top-supplier.jpg" alt="原料仕入先" />
         <div class="wrapper" id="supplier-wrapper"></div>
-        <h2 class="supplier_read">原料調達先</h2>
-        <a href="./news.html" class="supplier_more">Read More</a>
+        <h2 class="supplier_read">原料仕入先</h2>
+        <a href="./supplier.html" class="supplier_more">Read More</a>
       </div>
-      <div class="access slide-bottom" data-plugin-options='{"offset": -500}'>
-        <img class="access_img" src="./img/top-access.jpg" alt="" />
+      <div class="access slide-bottom" data-plugin-options='{"offset": -300}'>
+        <img class="access_img" src="./img/top-access.jpg" alt="アクセス" />
         <div class="wrapper" id="access-wrapper"></div>
         <h2 class="access_read">アクセス</h2>
-        <a href="./news.html" class="access_more">Read More</a>
+        <a href="./access.html" class="access_more">Read More</a>
       </div>
       <footer>
-        <p>Tamagawaya LLC All Rights Reserved</p>
-      </footer>
+          <div class="footer-color">
+            <div class="footer-left">
+              <ul>
+                <li>Tamagawaya LLC All Rights Reserved</li>
+                <li>Tel：042-461-8850</li>
+                <li>Fax：042-463-2316</li>
+                <li>Mail：tamagawaya@room.ocn.ne.jp</li>
+              </ul>
+            </div>
+            <div class="footer-right">
+              <ul>
+                <li>
+                  <span
+                    ><a href="line://ti/p/@inw6116o"
+                      ><i class="fab fa-line"></i></a
+                  ></span>
+                </li>
+                <li>
+                  <span
+                    ><a href="https://www.facebook.com/tamagawaya.1"
+                      ><i class="fab fa-facebook-square"></i></a
+                  ></span>
+                </li>
+                <li>
+                  <span
+                    ><a href="https://twitter.com/HgUO863rkwu7EEI"
+                      ><i class="fab fa-twitter-square"></i></a
+                  ></span>
+                </li>
+                <li>
+                  <span
+                    ><a href="https://www.instagram.com/tamagawaya8/"
+                      ><i class="fab fa-instagram"></i></a
+                  ></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script src="./js/jquery.fadethis.min.js"></script>
       <script src="./js/main.js"></script>

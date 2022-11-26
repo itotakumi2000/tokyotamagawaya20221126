@@ -121,6 +121,30 @@
   width: 26%;
 }
 
+.blackboard-box .tape-box .tape10 {
+  -webkit-transform: rotate(3deg);
+          transform: rotate(3deg);
+  width: 19%;
+}
+
+.blackboard-box .tape-box .tape11 {
+  -webkit-transform: rotate(-1deg);
+          transform: rotate(-1deg);
+  width: 36%;
+}
+
+.blackboard-box .tape-box .tape12 {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+  width: 20%;
+}
+
+.blackboard-box .tape-box .tape13 {
+  -webkit-transform: rotate(5deg);
+          transform: rotate(5deg);
+  width: 30%;
+}
+
 .blackboard-box .tape-box p {
   text-align: center;
   font-size: 30px;

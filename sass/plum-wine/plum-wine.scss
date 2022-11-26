@@ -54,18 +54,21 @@ body {
     display: flex;
     justify-content: space-between;
 
+    @include tab {
+      flex-wrap: wrap;
+    }
+    @include sp {
+      flex-wrap: wrap;
+    }
+
     .plum {
       width: 50%;
       @include tab {
-        width: 100%;
-      }
-      @include sp {
-        width: 100%;
-      }
-      @include tab {
+        width: 90%;
         height: 300px;
       }
       @include sp {
+        width: 90%;
         height: 200px;
       }
       margin: 0 auto;
